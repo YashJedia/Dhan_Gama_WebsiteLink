@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Get the App — Quick Download</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724; /* dark navy */
+      --card:#0b1220;
+      --accent:#06b6d4; /* cyan */
+      --accent-2:#7c3aed; /* purple */
+      --glass: rgba(255,255,255,0.04);
+      --muted: #9aa4b2;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#071027);color:#e6eef6}
+    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px}
+    .card{width:100%;max-width:980px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:18px;padding:34px;box-shadow: 0 10px 30px rgba(2,6,23,0.6);display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center}
+    .logo{display:flex;align-items:center;gap:14px}
+    .logo .mark{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;color:white;box-shadow:0 6px 20px rgba(124,58,237,0.25)}
+    h1{margin:4px 0 6px;font-size:28px;line-height:1.06}
+    p.lead{color:var(--muted);margin:0 0 18px}
+    .features{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .chip{background:var(--glass);padding:8px 12px;border-radius:999px;font-size:13px;color:var(--muted);display:inline-flex;gap:8px;align-items:center}
+
+    .download-area{background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;gap:12px}
+    .file-meta{display:flex;gap:12px;align-items:center}
+    .file-meta .file-icon{width:56px;height:56px;border-radius:10px;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center;font-size:20px}
+    .file-meta .meta-text{flex:1}
+    .meta-text .name{font-weight:600}
+    .meta-text .size{font-size:13px;color:var(--muted)}
+
+    .download-btn{display:flex;gap:10px}
+    .btn{flex:1;padding:14px 16px;border-radius:12px;border:0;font-weight:700;font-size:15px;cursor:pointer;transition:transform .12s ease, box-shadow .12s ease}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#031022;box-shadow:0 8px 24px rgba(7,18,36,0.5)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    .hint{font-size:13px;color:var(--muted)}
+    .right {text-align:right}
+
+    footer{margin-top:18px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+    /* responsive */
+    @media (max-width:900px){
+      .card{grid-template-columns:1fr;}
+      .right{text-align:left}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="main">
+      <div>
+        <div class="logo">
+          <div class="mark" id="appMark">A</div>
+          <div>
+            <h1 id="appName">AwesomeApp</h1>
+            <p class="lead" id="appTag">Fast — Secure — Delightful. Tap the button to download the app instantly.</p>
+          </div>
+        </div>
+
+        <div class="features" aria-hidden="true">
+          <div class="chip">⚡ Instant install</div>
+          <div class="chip">🔒 Safe & Verified</div>
+          <div class="chip">📱 Works offline</div>
+          <div class="chip">⭐ 4.8 ★ rating</div>
+        </div>
+
+        <div style="margin-top:18px">
+          <h3 style="margin:0 0 8px">About this download</h3>
+          <p class="hint">This link starts the download immediately. If nothing happens, use the secondary link below or copy the download URL into your browser.</p>
+        </div>
+
+        <footer>
+          <div class="hint">Version: <strong id="version">1.0.0</strong></div>
+          <div class="hint">Last updated: <strong id="updated">2025-10-06</strong></div>
+        </footer>
+      </div>
+
+      <div class="download-area right" style="min-width:260px">
+        <div class="file-meta">
+          <div class="file-icon">📦</div>
+          <div class="meta-text">
+            <div class="name" id="fileName">awesomeapp.apk</div>
+            <div class="size" id="fileSize">Size: 24.5 MB</div>
+          </div>
+        </div>
+
+        <div class="download-btn">
+          <!-- Primary button that triggers a direct download -->
+          <button class="btn btn-primary" id="downloadBtn" data-download-url="https://example.com/downloads/awesomeapp.apk">Download Now</button>
+
+          <!-- Secondary link that opens the download in a new tab -->
+          <a class="btn btn-ghost" id="openLink" href="https://example.com/downloads/awesomeapp.apk" target="_blank" rel="noopener">Open Link</a>
+        </div>
+
+        <div class="hint" id="status">Ready to download.</div>
+
+        <div style="display:flex;gap:8px;margin-top:10px;align-items:center;justify-content:center">
+          <small class="hint">Need a QR? Scan to download</small>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ------ Configuration: replace these values with your app details ------
+    const config = {
+      appName: 'AwesomeApp',
+      appInitial: 'A',
+      tagLine: 'Fast — Secure — Delightful. Tap the button to download the app instantly.',
+      version: '1.0.0',
+      updated: '2025-10-06',
+      fileName: 'awesomeapp.apk',
+      fileSize: '24.5 MB',
+      downloadUrl: 'https://example.com/downloads/awesomeapp.apk' // <-- Put your direct link here
+    };
+
+    // apply config to DOM
+    document.getElementById('appName').textContent = config.appName;
+    document.getElementById('appMark').textContent = config.appInitial;
+    document.getElementById('appTag').textContent = config.tagLine;
+    document.getElementById('version').textContent = config.version;
+    document.getElementById('updated').textContent = config.updated;
+    document.getElementById('fileName').textContent = config.fileName;
+    document.getElementById('fileSize').textContent = 'Size: ' + config.fileSize;
+    document.getElementById('downloadBtn').dataset.downloadUrl = config.downloadUrl;
+    document.getElementById('openLink').href = config.downloadUrl;
+
+    const statusEl = document.getElementById('status');
+    const dlBtn = document.getElementById('downloadBtn');
+
+    // Attempt to start a direct download when user clicks the button
+    dlBtn.addEventListener('click', async (e) => {
+      const url = e.currentTarget.dataset.downloadUrl;
+      if (!url) return;
+
+      // Visual feedback
+      statusEl.textContent = 'Preparing download...';
+      dlBtn.disabled = true;
+      dlBtn.textContent = 'Starting...';
+
+      try {
+        // Create an <a> element and click it. This works for most browsers.
+        const a = document.createElement('a');
+        a.href = url;
+        a.setAttribute('rel', 'noopener');
+        // the download attribute helps for same-origin resources. If cross-origin, server must set headers.
+        a.setAttribute('download', config.fileName || 'download');
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        statusEl.textContent = 'If download did not start automatically, click "Open Link" below or copy the download URL.';
+      } catch (err) {
+        console.error(err);
+        statusEl.textContent = 'Automatic start failed — use the "Open Link" button or copy the download URL.';
+      } finally {
+        dlBtn.disabled = false;
+        dlBtn.textContent = 'Download Now';
+      }
+    });
+
+    // Helpful note about cross-origin: if the file is hosted on a different domain, the `download` attribute may be ignored.
+    // For best results, host the file on the same domain or ensure the server sends the header:
+    // Content-Disposition: attachment; filename="awesomeapp.apk"
+
+    // Optional: If you want to allow pre-filling from URL parameters, uncomment below:
+    /*
+    const params = new URLSearchParams(location.search);
+    if (params.get('url')) {
+      const custom = params.get('url');
+      document.getElementById('downloadBtn').dataset.downloadUrl = custom;
+      document.getElementById('openLink').href = custom;
+    }
+    */
+  </script>
+</body>
+</html>
