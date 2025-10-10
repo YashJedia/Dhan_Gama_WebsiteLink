@@ -56,26 +56,33 @@
 
   /* Rates grid (new style) */
   .rates-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;align-items:stretch}
-  .rate-card{background:white;color:#6b1740;border-radius:14px;padding:22px;text-align:center;box-shadow:0 12px 30px rgba(2,6,23,0.08)}
+  /* Default: neutral/transparent cards — show colored backgrounds only on hover/focus */
+  .rate-card{background:rgba(255,255,255,0.02);color:var(--muted);border-radius:14px;padding:22px;text-align:center;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
   .rate-icon{width:56px;height:56px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;background:linear-gradient(90deg,var(--accent-2),var(--accent));color:white}
   .rate-title{font-weight:700;font-size:18px;margin-bottom:8px}
   .rate-line{font-weight:800;color:#6b1740}
   .rate-sub{color:var(--muted);font-size:13px}
 
-  .rate-card.featured{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:white;position:relative;overflow:hidden}
-  .rate-card.featured .rate-title, .rate-card.featured .rate-line{color:white}
+  /* Featured card: neutral by default, show gradient on hover/focus */
+  .rate-card.featured{background:rgba(255,255,255,0.02);color:var(--muted);position:relative;overflow:hidden}
+  .rate-card.featured .rate-title, .rate-card.featured .rate-line{color:var(--muted)}
   .ribbon{position:absolute;right:-36px;top:12px;transform:rotate(40deg);background:rgba(255,255,255,0.9);color:#0b1220;padding:6px 48px;border-radius:4px;font-weight:700;font-size:12px}
 
   /* Hover / focus effects for rate cards */
   .rate-card{transition:transform .22s cubic-bezier(.2,.9,.2,1), box-shadow .22s ease, filter .22s ease}
   .rate-card:hover, .rate-card:focus-within{transform:translateY(-8px) scale(1.02);box-shadow:0 24px 50px rgba(3,6,18,0.35);filter:brightness(1.03)}
+  /* On hover/focus non-featured cards become white with dark text (contrast for readability) */
+  .rate-card:not(.featured):hover, .rate-card:not(.featured):focus-within{background:white;color:#6b1740}
+  .rate-card:not(.featured):hover .rate-line, .rate-card:not(.featured):focus-within .rate-line{color:#6b1740}
+  .rate-card:not(.featured):hover .rate-title, .rate-card:not(.featured):focus-within .rate-title{color:#6b1740}
   .rate-card:focus{outline:3px solid rgba(124,58,237,0.14);outline-offset:6px}
 
   /* Accent glow for featured card on hover */
   .rate-card.featured{transition:transform .24s cubic-bezier(.2,.9,.2,1), box-shadow .24s ease}
-  .rate-card.featured:hover, .rate-card.featured:focus-within{transform:translateY(-10px) scale(1.035);box-shadow:0 28px 60px rgba(124,58,237,0.28);}
+  .rate-card.featured:hover, .rate-card.featured:focus-within{transform:translateY(-10px) scale(1.035);box-shadow:0 28px 60px rgba(124,58,237,0.28);background:linear-gradient(135deg,var(--accent-2),var(--accent));color:white}
+  .rate-card.featured:hover .rate-title, .rate-card.featured:hover .rate-line, .rate-card.featured:focus-within .rate-title, .rate-card.featured:focus-within .rate-line{color:white}
   .rate-card.featured::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0));opacity:0;transition:opacity .22s ease}
-  .rate-card.featured:hover::after{opacity:0.12}
+  .rate-card.featured:hover::after, .rate-card.featured:focus-within::after{opacity:0.12}
 
   /* Make the icon pop slightly on hover */
   .rate-card:hover .rate-icon, .rate-card:focus-within .rate-icon{transform:translateY(-4px) scale(1.05);transition:transform .22s cubic-bezier(.2,.9,.2,1)}
@@ -84,6 +91,8 @@
   .top-cta{position:fixed;left:50%;transform:translateX(-50%);top:78px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#031022;padding:8px;border-radius:999px;display:flex;gap:10px;align-items:center;z-index:200;box-shadow:0 10px 30px rgba(2,6,23,0.3);opacity:0;pointer-events:none;transition:opacity .25s ease}
   .top-cta.show{opacity:1;pointer-events:auto}
   .top-cta a{background:transparent;color:inherit;padding:8px 12px;border-radius:999px;font-weight:700;text-decoration:none}
+  /* visual for disabled contact links */
+  .disabled-link{color:rgba(255,255,255,0.4);pointer-events:none;opacity:0.7}
   @media(max-width:720px){.top-cta{top:70px;padding:6px}}
   .howto-nav{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:10px 12px;border-radius:8px;cursor:pointer}
   .howto-card:hover{transform:translateY(-6px)}
@@ -96,8 +105,11 @@
   /* navigation */
   .nav-links{display:flex;gap:12px;align-items:center}
   .nav-links a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
-  .nav-links a:hover{color:white;background:rgba(255,255,255,0.02)}
-  .nav-links a.active{color:white;background:linear-gradient(90deg,var(--accent),var(--accent-2));}
+  .nav-links a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;transition:background .22s ease,color .18s ease,transform .18s ease}
+  .nav-links a:hover{color:white;background:linear-gradient(90deg,var(--accent),var(--accent-2));transform:translateY(-2px);box-shadow:0 8px 20px rgba(7,18,36,0.35)}
+  .nav-links a:focus{outline:3px solid rgba(124,58,237,0.12);outline-offset:4px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
+  /* active nav: subtle — do not keep permanent gradient; hover/focus still show the pill */
+  .nav-links a.active{color:var(--muted);font-weight:700}
 
   /* floating download button */
   #floatDownload{position:fixed;right:18px;bottom:18px;z-index:120;display:none;box-shadow:0 8px 24px rgba(7,18,36,0.5)}
@@ -131,7 +143,7 @@
 <body>
   <!-- Top center CTA (appears on scroll) -->
   <div class="top-cta" id="topCta">
-    <a id="topDownload" href="#download">Download Win24/7 Matka APP</a>
+    <a id="topDownload" href="#download">Download DhanGama APP</a>
     <a id="topWhats" href="https://wa.me/" target="_blank">WhatsApp</a>
     <a id="topCall" href="tel:">Call</a>
   </div>
@@ -173,8 +185,8 @@
         <div class="panel-footer">
           <div>Ready to download.</div>
           <div class="cta-buttons">
-            <a class="btn-ghost" href="https://wa.me/+919179652701" target="_blank">WhatsApp</a>
-            <a class="btn-ghost" href="tel:+919179652701">Call</a>
+            <a class="btn-ghost" href="https://wa.me/" target="_blank">WhatsApp</a>
+            <a class="btn-ghost" href="tel:">Call</a>
           </div>
         </div>
 
