@@ -19,6 +19,7 @@
     .brand{display:flex;gap:12px;align-items:center}
     .mark{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800}
   .hero{display:grid;grid-template-columns:1fr minmax(260px,360px);gap:20px;align-items:start;margin-top:18px}
+  @media(max-width:900px){.hero{display:block;margin-top:10px}}
     .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:14px}
     h1{margin:0 0 8px}
     p.lead{color:var(--muted)}
@@ -27,17 +28,27 @@
     .file-meta{display:flex;gap:12px;align-items:center}
     .file-icon{width:56px;height:56px;border-radius:10px;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center}
     .btn{display:inline-block;padding:12px 18px;border-radius:12px;border:0;font-weight:700;color:#031022;background:linear-gradient(90deg,var(--accent),var(--accent-2));cursor:pointer;text-decoration:none}
+    @media(max-width:900px){.btn{width:100%;display:block;text-align:center;padding:12px 0}}
+    @media(max-width:420px){.btn{padding:10px 0;font-size:15px}}
     .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:12px 16px;border-radius:12px;text-decoration:none}
+    @media(max-width:900px){.btn-ghost{width:100%;display:block;text-align:center;padding:12px 0}}
+    @media(max-width:420px){.btn-ghost{padding:10px 0;font-size:15px}}
 
   .section{margin-top:26px;padding:48px 0;border-bottom:1px solid rgba(255,255,255,0.02)}
   .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
     .card{background:rgba(255,255,255,0.02);padding:16px;border-radius:12px}
+    @media(max-width:900px){.card{padding:12px}}
+    @media(max-width:420px){.card{padding:8px}}
 
   /* How to play cards */
   .howto-row{display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:nowrap}
   /* section background like reference */
-  #howto{background:linear-gradient(135deg,#4b1971,#7a2ee6);border-radius:18px;padding:44px 20px;position:relative;margin:18px 0}
+  #howto{background:linear-gradient(135deg,#4b1971,#7a2ee6);border-radius:18px;padding:44px 20px;position:relative;margin:18px 0;overflow:hidden}
+  @media(max-width:900px){#howto{padding:28px 8px;margin:12px 0}}
+  @media(max-width:420px){#howto{padding:16px 2px;margin:8px 0}}
   .howto-card{width:320px;min-height:200px;background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);border-radius:18px;padding:26px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 20px 40px rgba(3,6,18,0.45);transition:transform .18s ease;color:#fff;scroll-snap-align:center}
+  @media(max-width:900px){.howto-card{width:100%;max-width:480px;padding:18px}}
+  @media(max-width:420px){.howto-card{width:100%;max-width:320px;padding:10px}}
   .howto-icon{width:84px;height:84px;border-radius:50%;background:linear-gradient(90deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;margin-bottom:14px}
   .howto-title{font-weight:700;text-align:center;font-size:18px}
   .howto-sub{color:rgba(255,255,255,0.8);font-size:14px;text-align:center;margin-top:8px}
@@ -45,17 +56,25 @@
   .howto-badge{position:absolute;left:50%;top:-18px;transform:translateX(-50%);background:#ff5a4d;color:white;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,0.35)}
   .howto-arrow{font-size:28px;color:rgba(255,255,255,0.6)}
   /* make the track a constrained centered container so the list of cards sits in the middle */
-  .howto-track{overflow:visible;width:100%;max-width:980px;margin:0 auto;position:relative}
-  .howto-list{display:flex;gap:28px;transition:scroll-behavior .3s;padding:8px 12px;margin:0 auto;justify-content:center;overflow-x:auto;scroll-snap-type:x mandatory}
+  .howto-track{overflow-x:auto;width:100%;max-width:980px;margin:0 auto;position:relative;padding:0 8px;box-sizing:border-box}
+  @media(max-width:900px){.howto-track{max-width:100%;padding:0 2px}}
+  .howto-list{display:flex;gap:28px;transition:scroll-behavior .3s;padding:8px 0;margin:0 auto;justify-content:center;overflow-x:auto;scroll-snap-type:x mandatory;box-sizing:border-box}
+  @media(max-width:900px){
+    .howto-list{flex-direction:column;overflow-y:auto;overflow-x:hidden;max-height:420px;gap:18px;padding:8px 0;scroll-snap-type:y mandatory;}
+    .howto-card{scroll-snap-align:center;margin:0 auto;width:100%;max-width:340px;}
+  }
+  @media(max-width:420px){.howto-list{gap:10px;padding:6px 0;max-height:320px}}
   /* chevron between cards */
   .howto-list{max-width:880px}
   .howto-card:not(:last-child)::after{content:'›';position:absolute;right:-18px;top:50%;transform:translateY(-50%);background:transparent;color:rgba(255,255,255,0.85);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;border:1px solid rgba(255,255,255,0.06)}
+  @media(max-width:900px){.howto-card:not(:last-child)::after{display:none}}
   .howto-dots{display:flex;gap:8px;justify-content:center;margin-top:12px}
   .howto-dots .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.12);cursor:pointer}
   .howto-dots .dot.active{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
 
   /* Rates grid (new style) */
   .rates-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;align-items:stretch}
+  @media(max-width:900px){.rates-grid{grid-template-columns:1fr;gap:12px}}
   /* Default: neutral/transparent cards — show colored backgrounds only on hover/focus */
   .rate-card{background:rgba(255,255,255,0.02);color:var(--muted);border-radius:14px;padding:22px;text-align:center;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
   .rate-icon{width:56px;height:56px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;background:linear-gradient(90deg,var(--accent-2),var(--accent));color:white}
@@ -100,6 +119,8 @@
   @media(max-width:720px){.howto-card{width:100%;max-width:480px}}
 
   header{position:sticky;top:0;background:linear-gradient(180deg, rgba(15,23,36,0.9), rgba(15,23,36,0.6));backdrop-filter: blur(6px);z-index:50;padding:12px 0}
+  /* ensure main content is interactive and sits above accidental overlays */
+  .container, main, .hero {position:relative; z-index:1}
   footer{margin-top:36px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;padding:18px 0}
 
   /* navigation */
@@ -115,10 +136,14 @@
   .mobile-toggle{display:none;background:transparent;border:0;color:var(--muted);font-size:22px;padding:8px;border-radius:8px;cursor:pointer}
   @media(max-width:900px){
     .mobile-toggle{display:block}
-    .nav-links{position:fixed;right:12px;top:70px;flex-direction:column;background:linear-gradient(180deg, rgba(7,10,20,0.95), rgba(7,10,20,0.98));padding:12px;border-radius:12px;gap:10px;display:none;box-shadow:0 8px 30px rgba(2,6,23,0.6);z-index:220}
+    /* constrain mobile nav so it does not cover the whole page and does not block interaction when hidden */
+    .nav-links{position:fixed;right:12px;top:70px;flex-direction:column;background:linear-gradient(180deg, rgba(7,10,20,0.95), rgba(7,10,20,0.98));padding:12px;border-radius:12px;gap:10px;display:none;box-shadow:0 8px 30px rgba(2,6,23,0.6);z-index:220;max-width:260px;width:auto}
     .nav-links.show{display:flex}
     .nav-links a{display:block}
     header{padding:8px 0}
+    /* avoid the hidden nav from intercepting pointer events */
+    .nav-links{pointer-events:none}
+    .nav-links.show{pointer-events:auto}
   }
 
   /* Small-phone layout adjustments */
@@ -128,7 +153,13 @@
     .rate-card{padding:14px}
     .btn{width:100%;display:block;text-align:center}
     .download-panel{padding:16px}
+    /* reduce download panel visual footprint on phones */
+    .download-area.download-panel{max-width:100%;padding:14px}
   }
+
+  /* Carousel touch improvements */
+  .howto-list{ -webkit-overflow-scrolling: touch; touch-action: pan-x; }
+  html, body { touch-action: pan-y; }
 
   /* floating download button removed */
 
@@ -150,9 +181,12 @@
   .download-actions .btn-ghost{padding:12px 18px;border-radius:12px}
   .panel-note{color:var(--muted);font-size:13px;margin-top:8px}
   .panel-footer{margin-top:14px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
+    @media(max-width:900px){.panel-footer{flex-direction:column;align-items:flex-start;gap:8px}}
+  @media(max-width:900px){footer{flex-direction:column;align-items:flex-start;gap:8px;padding:10px 0}}
   .panel-footer .cta-buttons{display:flex;gap:12px}
   /* bottom-center sticky download CTA (smaller, no close) */
   .sticky-center-cta{position:fixed;left:50%;bottom:18px;top:auto;transform:translateX(-50%);z-index:400;display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#031022;font-weight:800;box-shadow:0 12px 32px rgba(2,6,23,0.45);border:0;cursor:pointer;font-size:14px}
+  @media(max-width:640px){.sticky-center-cta{padding:10px 8px;font-size:13px;bottom:8px}}
   .sticky-center-cta .label{font-size:14px}
   @media(max-width:640px){.sticky-center-cta{padding:10px 16px;font-size:13px;bottom:12px}} 
   </style>
@@ -368,51 +402,94 @@
 
     // floating download button removed; sticky CTA remains
 
-  // How-to carousel behaviors
-  const howList = document.getElementById('howList');
-  const howPrev = document.getElementById('howPrev');
-  const howNext = document.getElementById('howNext');
-  let isDown = false, startX, scrollLeft;
+  // How-to carousel behaviors (guarded, vertical for mobile)
+  (function(){
+    const howList = document.getElementById('howList');
+    const howPrev = document.getElementById('howPrev');
+    const howNext = document.getElementById('howNext');
+    const howDots = document.getElementById('howDots');
+    if(!howList) return;
+    let isDown = false, startPos, scrollStart;
 
-  const cardWidth = () => howList.querySelector('.howto-card').getBoundingClientRect().width + 18;
+    function isVertical(){ return window.innerWidth <= 900; }
+    const cardSize = () => {
+      const el = howList.querySelector('.howto-card');
+      if(!el) return 300;
+      return isVertical() ? el.getBoundingClientRect().height + 18 : el.getBoundingClientRect().width + 18;
+    };
 
-  howPrev.addEventListener('click', () => { howList.scrollBy({left: -cardWidth(), behavior: 'smooth'}); });
-  howNext.addEventListener('click', () => { howList.scrollBy({left: cardWidth(), behavior: 'smooth'}); });
+    if(howPrev) howPrev.addEventListener('click', () => {
+      if(isVertical()) howList.scrollBy({top: -cardSize(), behavior: 'smooth'});
+      else howList.scrollBy({left: -cardSize(), behavior: 'smooth'});
+    });
+    if(howNext) howNext.addEventListener('click', () => {
+      if(isVertical()) howList.scrollBy({top: cardSize(), behavior: 'smooth'});
+      else howList.scrollBy({left: cardSize(), behavior: 'smooth'});
+    });
 
-  // pointer drag
-  howList.addEventListener('pointerdown', (e) => { isDown = true; howList.setPointerCapture(e.pointerId); startX = e.clientX; scrollLeft = howList.scrollLeft; });
-  howList.addEventListener('pointermove', (e) => { if (!isDown) return; const dx = e.clientX - startX; howList.scrollLeft = scrollLeft - dx; });
-  howList.addEventListener('pointerup', (e) => { isDown = false; howList.releasePointerCapture(e.pointerId); });
-  howList.addEventListener('pointerleave', () => { isDown = false; });
+    // pointer drag (vertical or horizontal)
+    howList.addEventListener('pointerdown', (e) => {
+      isDown = true;
+      try{ howList.setPointerCapture(e.pointerId); }catch(e){}
+      startPos = isVertical() ? e.clientY : e.clientX;
+      scrollStart = isVertical() ? howList.scrollTop : howList.scrollLeft;
+    });
+    howList.addEventListener('pointermove', (e) => {
+      if (!isDown) return;
+      const delta = (isVertical() ? e.clientY : e.clientX) - startPos;
+      if(isVertical()) howList.scrollTop = scrollStart - delta;
+      else howList.scrollLeft = scrollStart - delta;
+    });
+    howList.addEventListener('pointerup', (e) => { isDown = false; try{ howList.releasePointerCapture(e.pointerId); }catch(e){} });
+    howList.addEventListener('pointerleave', () => { isDown = false; });
 
-  // keyboard support
-  howList.tabIndex = 0;
-  howList.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') howList.scrollBy({left: cardWidth(), behavior: 'smooth'}); if (e.key === 'ArrowLeft') howList.scrollBy({left: -cardWidth(), behavior: 'smooth'}); });
+    // keyboard support
+    howList.tabIndex = 0;
+    howList.addEventListener('keydown', (e) => {
+      if(isVertical()){
+        if (e.key === 'ArrowDown') howList.scrollBy({top: cardSize(), behavior: 'smooth'});
+        if (e.key === 'ArrowUp') howList.scrollBy({top: -cardSize(), behavior: 'smooth'});
+      }else{
+        if (e.key === 'ArrowRight') howList.scrollBy({left: cardSize(), behavior: 'smooth'});
+        if (e.key === 'ArrowLeft') howList.scrollBy({left: -cardSize(), behavior: 'smooth'});
+      }
+    });
 
     // dots and snapping
-    const howDots = document.getElementById('howDots');
     const cards = howList.querySelectorAll('.howto-card');
     function createDots(){
+      if(!howDots) return;
+      howDots.innerHTML = '';
       cards.forEach((c, i) => {
         const d = document.createElement('div'); d.className='dot'; d.dataset.index = i; howDots.appendChild(d);
-        d.addEventListener('click', ()=> { howList.scrollTo({left: i * cardWidth(), behavior:'smooth'}); updateDots(i); });
+        d.addEventListener('click', ()=> {
+          if(isVertical()) howList.scrollTo({top: i * cardSize(), behavior:'smooth'});
+          else howList.scrollTo({left: i * cardSize(), behavior:'smooth'});
+          updateDots(i);
+        });
       });
       updateDots(0);
     }
-    function updateDots(active){
-      howDots.querySelectorAll('.dot').forEach((d,i)=> d.classList.toggle('active', i===active));
-    }
+    function updateDots(active){ if(!howDots) return; howDots.querySelectorAll('.dot').forEach((d,i)=> d.classList.toggle('active', i===active)); }
 
     let snapTimeout;
     function snapToNearest(){
-      const pos = howList.scrollLeft;
-      const idx = Math.round(pos / cardWidth());
-      howList.scrollTo({left: idx * cardWidth(), behavior: 'smooth'});
+      const pos = isVertical() ? howList.scrollTop : howList.scrollLeft;
+      const idx = Math.round(pos / cardSize());
+      if(isVertical()) howList.scrollTo({top: idx * cardSize(), behavior: 'smooth'});
+      else howList.scrollTo({left: idx * cardSize(), behavior: 'smooth'});
       updateDots(idx);
     }
     howList.addEventListener('pointerup', ()=> { snapToNearest(); });
-    howList.addEventListener('scroll', ()=> { clearTimeout(snapTimeout); snapTimeout = setTimeout(()=> snapToNearest(), 120); const idx = Math.round(howList.scrollLeft / cardWidth()); updateDots(idx); });
+    howList.addEventListener('scroll', ()=> {
+      clearTimeout(snapTimeout);
+      snapTimeout = setTimeout(()=> snapToNearest(), 120);
+      const idx = Math.round((isVertical() ? howList.scrollTop : howList.scrollLeft) / cardSize());
+      updateDots(idx);
+    });
     createDots();
+    window.addEventListener('resize', createDots);
+  })();
 
     // Show/hide top CTA when scrolling
     const topCta = document.getElementById('topCta');
@@ -447,13 +524,66 @@
     (function(){
       const toggle = document.getElementById('mobileToggle');
       const nav = document.getElementById('navLinks');
+      // initialization: ensure nav is hidden and links are not tabbable by default
+      function initNavState(){
+        try{
+          if(!nav) return;
+          if(!nav.classList.contains('show')){
+            nav.setAttribute('aria-hidden','true');
+            const links = nav.querySelectorAll('a');
+            links.forEach(a => a.tabIndex = -1);
+          } else {
+            nav.setAttribute('aria-hidden','false');
+            const links = nav.querySelectorAll('a');
+            links.forEach(a => a.tabIndex = 0);
+          }
+        }catch(e){/* non-fatal */}
+      }
       function closeNav(){ if(nav) nav.classList.remove('show'); if(toggle) toggle.setAttribute('aria-expanded','false'); }
       function openNav(){ if(nav) nav.classList.add('show'); if(toggle) toggle.setAttribute('aria-expanded','true'); }
       if(toggle && nav){
-        toggle.addEventListener('click', (e)=>{ e.stopPropagation(); nav.classList.toggle('show'); const expanded = nav.classList.contains('show'); toggle.setAttribute('aria-expanded', expanded); });
-        document.addEventListener('click', (e)=>{ if(!nav.contains(e.target) && !toggle.contains(e.target)) closeNav(); });
-        document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeNav(); });
+            // focus trap helpers
+            const focusableSelector = 'a, button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+            let lastFocusedBeforeOpen = null;
+
+            function trapFocus(e){
+              if(!nav.classList.contains('show')) return; // only trap when open
+              const focusable = Array.from(nav.querySelectorAll(focusableSelector)).filter(el => !el.hasAttribute('disabled'));
+              if(focusable.length === 0) return;
+              const first = focusable[0];
+              const last = focusable[focusable.length - 1];
+              if(e.key === 'Tab'){
+                if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+                else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+              }
+            }
+
+            toggle.addEventListener('click', (e)=>{ 
+              e.stopPropagation(); 
+              const willShow = !nav.classList.contains('show');
+              if(willShow){ 
+                // open and make links tabbable
+                lastFocusedBeforeOpen = document.activeElement;
+                nav.classList.add('show'); nav.setAttribute('aria-hidden','false'); nav.querySelectorAll('a').forEach(a=> a.tabIndex=0);
+                // focus the first item for keyboard users
+                const firstLink = nav.querySelector('a'); if(firstLink) firstLink.focus();
+                document.addEventListener('keydown', trapFocus);
+              }
+              else { 
+                // close and hide links
+                nav.classList.remove('show'); nav.setAttribute('aria-hidden','true'); nav.querySelectorAll('a').forEach(a=> a.tabIndex=-1);
+                document.removeEventListener('keydown', trapFocus);
+                if(lastFocusedBeforeOpen && typeof lastFocusedBeforeOpen.focus === 'function') lastFocusedBeforeOpen.focus();
+              }
+              toggle.setAttribute('aria-expanded', willShow);
+            });
+            // close when clicking outside
+            document.addEventListener('click', (e)=>{ if(!nav.contains(e.target) && !toggle.contains(e.target)) { if(nav.classList.contains('show')){ nav.classList.remove('show'); nav.setAttribute('aria-hidden','true'); nav.querySelectorAll('a').forEach(a=> a.tabIndex=-1); document.removeEventListener('keydown', trapFocus); toggle.setAttribute('aria-expanded','false'); } } });
+            // close on Escape
+            document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && nav.classList.contains('show')){ nav.classList.remove('show'); nav.setAttribute('aria-hidden','true'); nav.querySelectorAll('a').forEach(a=> a.tabIndex=-1); document.removeEventListener('keydown', trapFocus); toggle.setAttribute('aria-expanded','false'); if(lastFocusedBeforeOpen && typeof lastFocusedBeforeOpen.focus === 'function') lastFocusedBeforeOpen.focus(); } });
       }
+      // run initialization once DOM is ready
+      initNavState();
     })();
   </script>
     <!-- centered sticky download CTA -->
