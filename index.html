@@ -111,9 +111,7 @@
   /* active nav: subtle — do not keep permanent gradient; hover/focus still show the pill */
   .nav-links a.active{color:var(--muted);font-weight:700}
 
-  /* floating download button */
-  #floatDownload{position:fixed;right:18px;bottom:18px;z-index:120;display:none;box-shadow:0 8px 24px rgba(7,18,36,0.5)}
-  #floatDownload.show{display:block}
+  /* floating download button removed */
 
   /* fade-in animation for sections */
   .fade-in{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
@@ -328,14 +326,6 @@
     });
     document.getElementById('openLink').href = downloadUrl;
 
-    // Add floating download button
-    const floatBtn = document.createElement('a');
-    floatBtn.id = 'floatDownload';
-    floatBtn.className = 'btn';
-    floatBtn.textContent = 'Download';
-    floatBtn.href = downloadUrl;
-    floatBtn.setAttribute('download', fileNameFriendly);
-    document.body.appendChild(floatBtn);
 
     // IntersectionObserver for active nav and fade-in
     const sections = document.querySelectorAll('main .section, #hero');
@@ -356,14 +346,7 @@
     const heroInitial = document.getElementById('hero');
     if (heroInitial) heroInitial.classList.add('in-view');
 
-    // Show floating download on small screens when not near download section
-    const downloadSection = document.getElementById('download');
-    const floatObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) floatBtn.classList.remove('show'); else floatBtn.classList.add('show');
-      });
-    }, {threshold: 0.2});
-    if (downloadSection) floatObserver.observe(downloadSection);
+    // floating download button removed; sticky CTA remains
 
   // How-to carousel behaviors
   const howList = document.getElementById('howList');
