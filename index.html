@@ -472,7 +472,6 @@
     }
     function updateDots(active){ if(!howDots) return; howDots.querySelectorAll('.dot').forEach((d,i)=> d.classList.toggle('active', i===active)); }
 
-    let snapTimeout;
     function snapToNearest(){
       const pos = isVertical() ? howList.scrollTop : howList.scrollLeft;
       const idx = Math.round(pos / cardSize());
@@ -480,11 +479,16 @@
       else howList.scrollTo({left: idx * cardSize(), behavior: 'smooth'});
       updateDots(idx);
     }
-    howList.addEventListener('pointerup', ()=> { snapToNearest(); });
+    // Snap immediately on pointerup, touchend, and scroll
+    howList.addEventListener('pointerup', snapToNearest);
+    howList.addEventListener('touchend', snapToNearest);
+    let lastIdx = 0;
     howList.addEventListener('scroll', ()=> {
-      clearTimeout(snapTimeout);
-      snapTimeout = setTimeout(()=> snapToNearest(), 120);
       const idx = Math.round((isVertical() ? howList.scrollTop : howList.scrollLeft) / cardSize());
+      if(idx !== lastIdx){
+        snapToNearest();
+        lastIdx = idx;
+      }
       updateDots(idx);
     });
     createDots();
